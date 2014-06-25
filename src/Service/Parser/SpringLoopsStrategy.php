@@ -8,7 +8,7 @@ class SpringLoopsStrategy implements ParserStrategyInterface
     public function parse(array $data)
     {
     	// decode data payload
-        $decoded = json_decode($data['payload']);
+        $decoded = (array)json_decode($data['payload']);
         //@todo to be removed 
         //$decoded = array('commitMessage' => "{{#TASK_ID 123123098}} {{#MESSAGE a oasifjoasdifsaoid }}");
         $message = $decoded['commitMessage'];
