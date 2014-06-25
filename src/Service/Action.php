@@ -18,4 +18,9 @@ class Action implements ActionInterface
     {
     	return $this->message;
     }
+
+    public function timeSpent()
+    {
+    	return $this->timeSpent;
+    }
 }
