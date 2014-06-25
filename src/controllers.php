@@ -15,8 +15,10 @@ $app->get('/', function () use ($app) {
 ->bind('homepage');
 
 $app->post('/api/action', function (Request $request) use ($app) {
-    
-    error_log($_REQUEST);
+    ob_start();
+    var_dump($_REQUEST);
+    $data = ob_get_clean();
+    error_log($data);
     $dbConfig = require_once(__DIR__.'/../config/db/doctrine.config.php');
     $app->register(new \Silex\Provider\DoctrineServiceProvider(), array(
         'db.options' => $dbConfig
