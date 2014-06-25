@@ -32,7 +32,7 @@ class SpringLoopsStrategy implements ParserStrategyInterface
         $action = new \Service\Action();
         $action->taskId = $taskId;
         $action->message = $message;
-        $action->timeSpent = $timeSpent
+        $action->timeSpent = $timeSpent;
 
         return $action;
     }
