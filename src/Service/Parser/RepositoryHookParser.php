@@ -15,7 +15,18 @@ class RepositoryHookParser
      */
     public function identifyRequest(array $data)
     {
-        
+        //@todo should return it
+        return self::REPO_SPRING_LOOPS;
+        $jsonDecoded = json_decode($data['payload']);
+        if ($jsonDecoded['domain'] == self::REPO_SPRING_LOOPS)
+        {
+            return self::REPO_SPRING_LOOPS;
+        }
+        else
+        {
+            //@todo add the actual case properly
+            return self::REPO_BIT_BUCKET;
+        }
     }
 
     /**

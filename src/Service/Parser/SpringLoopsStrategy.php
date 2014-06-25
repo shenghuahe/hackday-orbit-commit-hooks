@@ -9,6 +9,8 @@ class SpringLoopsStrategy implements ParserStrategyInterface
     {
     	// decode data payload
         $decoded = json_decode($data['payload']);
+        //@todo to be removed 
+        //$decoded = array('commitMessage' => "{{#TASK_ID 123123098}} {{#MESSAGE a oasifjoasdifsaoid }}");
         $message = $decoded['commitMessage'];
 
         // get taskId matches
@@ -18,11 +20,11 @@ class SpringLoopsStrategy implements ParserStrategyInterface
 
         // get message matches
         $matches = array();
-        preg_match("/{{#MESSAGE (.*)}}/", $input_line, $matches);
+        preg_match("/{{#MESSAGE (.*)}}/", $message, $matches);
         $message = $matches[1];
 
         // add stuff to action object
-        $action = new Service\Action();
+        $action = new \Service\Action();
         $action->taskId = $taskId;
         $action->message = $message;
 

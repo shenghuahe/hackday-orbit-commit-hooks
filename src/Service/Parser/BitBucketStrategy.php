@@ -5,7 +5,7 @@ namespace Service\Parser;
 class BitBucketStrategy implements ParserStrategyInterface
 {
 
-    public function parse($json)
+    public function parse(array $json)
     {
         
     }

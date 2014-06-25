@@ -9,13 +9,13 @@ class Action implements ActionInterface
     	return $this->taskId;
     }
 
-    public function userId();
+    public function userId()
     {
     	throw new Exception('Not implemented');
     }
 
-    public function message();
+    public function message()
     {
-    	return $this->message();
+    	return $this->message;
     }
 }
