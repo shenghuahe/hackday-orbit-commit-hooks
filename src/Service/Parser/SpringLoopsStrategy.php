@@ -23,10 +23,16 @@ class SpringLoopsStrategy implements ParserStrategyInterface
         preg_match("/{{#MESSAGE (.*)}}/", $message, $matches);
         $message = $matches[1];
 
+        // get time spent matches
+        $matches = array();
+        preg_match("/{{#TIME_SPENT ([0-9]+)}}/", $message, $matches);
+        $timeSpent = $matches[1];
+
         // add stuff to action object
         $action = new \Service\Action();
         $action->taskId = $taskId;
         $action->message = $message;
+        $action->timeSpent = $timeSpent
 
         return $action;
     }

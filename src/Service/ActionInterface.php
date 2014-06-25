@@ -10,4 +10,6 @@ interface ActionInterface
     public function userId();
 
     public function message();
+
+    public function timeSpent();
 }
