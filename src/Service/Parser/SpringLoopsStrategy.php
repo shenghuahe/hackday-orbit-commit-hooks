@@ -20,7 +20,7 @@ class SpringLoopsStrategy implements ParserStrategyInterface
 
         // get message matches
         $matches = array();
-        preg_match("/{{#MESSAGE (.*)}}/u", $message, $matches);
+        preg_match("/{{#MESSAGE ([^}]*.)}}/u", $message, $matches);
         $message = $matches[1];
 
         // get time spent matches
