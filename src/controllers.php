@@ -16,7 +16,7 @@ $app->get('/', function () use ($app) {
 
 $app->post('/api/action', function (Request $request) use ($app) {
     
-    error_log($request->getContent());
+    error_log($_REQUEST);
     $dbConfig = require_once(__DIR__.'/../config/db/doctrine.config.php');
     $app->register(new \Silex\Provider\DoctrineServiceProvider(), array(
         'db.options' => $dbConfig
