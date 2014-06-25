@@ -17,10 +17,11 @@ class ActionModel
         $taskId   = $action->taskId();
         $personId = 1000001308;
         $message  = $action->message();
+        $timeSpent = $action->timeSpent();
         $date     = new \DateTime('now');
-        $sql      = "INSERT INTO `actions` (`taskId`, `createdBy`, `actionNotes`, `date`)
-            VALUES (" . (int) $taskId . ", " . (int) $personId . ", \"" . addslashes($message) . "\",
-                \"" . $date->format('Y-m-d') . "\")";
+        $sql      = "INSERT INTO `actions` (`taskId`, `createdBy`, `internalAssignment`, `actionNotes`, `date`, `timeSpent`)
+            VALUES (" . (int) $taskId . ", " . (int) $personId . "," . (int) $personId . ", \"" . addslashes($message) . "\",
+                \"" . $date->format('Y-m-d') . "\", ".(int)$timeSpent.")";
         return $this->db->exec($sql);
     }
 
