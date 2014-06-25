@@ -1,6 +1,6 @@
 {
-    "name": "fabpot/silex-skeleton",
-    "description": "A pre-configured skeleton for the Silex microframework",
+    "name": "Orbit API by Silex",
+    "description": "Orbit API implementation using the light weight Silex framework",
     "license": "MIT",
     "type": "project",
     "require": {
@@ -20,10 +20,11 @@
         "symfony/security": "~2.3",
         "symfony/translation": "~2.3",
         "symfony/twig-bridge": "~2.3",
-        "symfony/validator": "~2.3"
+        "symfony/validator": "~2.3",
+        "doctrine/dbal": "2.2.*"
     },
     "autoload": {
-        "psr-0": { "": "src/" }
+        "psr-0": {"": "src/"}
     },
     "extra": {
         "branch-alias": {
