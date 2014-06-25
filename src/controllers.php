@@ -8,7 +8,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Silex\Provider\DoctrineServiceProvider;
 
 //Request::setTrustedProxies(array('127.0.0.1'));
-
 $app->get('/', function () use ($app) {
     return $app['twig']->render('index.html', array());
 })
@@ -20,6 +19,8 @@ $app->post('/api/action', function (Request $request) use ($app) {
     $app->register(new \Silex\Provider\DoctrineServiceProvider(), array(
         'db.options' => $dbConfig
     ));
+    
+    new \Model\ActionModel();
     $sql = "SELECT * FROM `changelog`";
     $post = $app['db']->fetchAll($sql);
     $postData = $request->getContent();
