@@ -2,3 +2,4 @@
 composer.lock
 .htaccess
 doctrine.config.php
+/nbproject/private/
