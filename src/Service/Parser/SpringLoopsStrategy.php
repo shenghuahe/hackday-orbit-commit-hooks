@@ -15,17 +15,17 @@ class SpringLoopsStrategy implements ParserStrategyInterface
 
         // get taskId matches
         $matches = array();
-        preg_match("/{{#TASK_ID ([0-9]+)}}/", $message, $matches);
+        preg_match("/{{#TASK_ID ([0-9]+)}}/u", $message, $matches);
         $taskId = $matches[1];
 
         // get message matches
         $matches = array();
-        preg_match("/{{#MESSAGE (.*)}}/", $message, $matches);
+        preg_match("/{{#MESSAGE (.*)}}/u", $message, $matches);
         $message = $matches[1];
 
         // get time spent matches
         $matches = array();
-        preg_match("/{{#TIME_SPENT ([0-9]+)}}/", $message, $matches);
+        preg_match("/{{#TIME_SPENT ([0-9]+)}}/u", $message, $matches);
         $timeSpent = $matches[1];
 
         // add stuff to action object
