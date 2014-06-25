@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Silex\Provider\DoctrineServiceProvider;
+use Service\Parser\RepositoryHookParser;
 
 //Request::setTrustedProxies(array('127.0.0.1'));
 $app->get('/', function () use ($app) {
@@ -14,20 +15,32 @@ $app->get('/', function () use ($app) {
 ->bind('homepage');
 
 $app->post('/api/action', function (Request $request) use ($app) {
-    
+    ob_start();
+    var_dump($_REQUEST);
+    $data = ob_get_clean();
+    error_log($data);
     $dbConfig = require_once(__DIR__.'/../config/db/doctrine.config.php');
     $app->register(new \Silex\Provider\DoctrineServiceProvider(), array(
         'db.options' => $dbConfig
     ));
-    
-    new \Model\ActionModel();
-    $sql = "SELECT * FROM `changelog`";
-    $post = $app['db']->fetchAll($sql);
-    $postData = $request->getContent();
-    echo "<pre>";
-    print_r($postData);
-    print_r($post);
-    echo "</pre>";
+//    $hookParser = new RepositoryHookParser();
+//    switch($hookParser->identifyRequest($data))
+//    {
+//        case RepositoryHookParser::REPO_BIT_BUCKET:
+//            $action = $hookParser->constructAction(new \Service\Parser\BitBucketStrategy(), $data);
+//            break;
+//        case RepositoryHookParser::REPO_SPRING_LOOPS:
+//            $action = $hookParser->constructAction(new \Service\Parser\SpringLoopsStrategy(), $data);
+//            break;
+//        default:
+//    }
+//    $sql = "SELECT * FROM `changelog`";
+//    $post = $app['db']->fetchAll($sql);
+//    $postData = $request->getContent();
+//    echo "<pre>";
+//    print_r($postData);
+//    print_r($post);
+//    echo "</pre>";
     return new Response('Action received', 201);
 });
 
