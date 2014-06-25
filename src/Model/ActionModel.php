@@ -18,6 +18,7 @@ class ActionModel
         $personId = 1000001308;
         $message  = $action->message();
         $timeSpent = $action->timeSpent();
+        error_log('timespent:'.$timeSpent);
         $date     = new \DateTime('now');
         $sql      = "INSERT INTO `actions` (`taskId`, `createdBy`, `internalAssignment`, `actionNotes`, `date`, `timeSpent`)
             VALUES (" . (int) $taskId . ", " . (int) $personId . "," . (int) $personId . ", \"" . addslashes($message) . "\",
