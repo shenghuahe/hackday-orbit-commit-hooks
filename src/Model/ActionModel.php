@@ -19,7 +19,7 @@ class ActionModel
         $message  = $action->message();
         $date     = new \DateTime('now');
         $sql      = "INSERT INTO `actions` (`taskId`, `createdBy`, `actionNotes`, `date`)
-            VALUES (" . (int) $taskId . ", " . (int) $personId . ", \"" . mysql_real_escape_string($message) . "\",
+            VALUES (" . (int) $taskId . ", " . (int) $personId . ", \"" . addslashes($message) . "\",
                 \"" . $date->format('Y-m-d') . "\")";
         return $this->db->exec($sql);
     }
